@@ -1,0 +1,46 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+    {
+      "type": "cppbuild",
+      "label": "C/C++: Compilar",
+      "command": "C:\\MinGW\\bin\\gcc.exe",
+      "args": [
+        "-fdiagnostics-color=always",
+        "-g",
+        "src/main.c", // Compila el archivo main dentro de la carpeta src
+        "-o",
+        "build\\Pacman.exe", // Genera el ejecutable en la carpeta build 
+        "-I", "C:/CSFML/include", // Incluye la carpeta include de la libreria CSFML
+        "-L", "C:/CSFML/lib/gcc", // Incluye la carpeta lib de la libreria CSFML
+        // Todo esto es para que lea los dll de la libreria
+        "-lcsfml-graphics",
+        "-lcsfml-window",
+        "-lcsfml-system",
+        // Silencia los warnings de funciones deprecated
+        "-Wno-deprecated-declarations",
+        // Argumento para que no se abra la consola mientras esté abierta la ventana de la libreria CSFML
+        // "-mwindows"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build",
+      "detail": "compiler: C:\\MinGW\\bin\\gcc.exe"
+    },
+    {
+      "label": "Ejecutar Pacman",
+      "type": "shell",
+      "command": ".\\build\\Pacman.exe",
+      "group": {
+          "kind": "test",
+          "isDefault": true
+      },
+      "dependsOn": "C/C++: Compilar",
+      "problemMatcher": []
+    }
+  ]
+}
